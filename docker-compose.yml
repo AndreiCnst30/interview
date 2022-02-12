@@ -24,3 +24,11 @@ services:
       - "8080:8080"
     depends_on:
       - mongodb
+
+  react-app:
+    container_name: reactnginx
+    build:
+      context: ./react-nginx
+      dockerfile: Dockerfile
+    ports:
+    - 80:80
