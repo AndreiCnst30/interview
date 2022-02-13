@@ -19,7 +19,7 @@ const Login =() => {
             alert('Wrong user&pass combination');
         }
         else {
-            fetch("/ping").then((response) => {
+            fetch("/api/ping").then((response) => {
                 if (response.status != 200) {
                     alert('Database is down');
                 } else {

@@ -18,12 +18,12 @@ public class DummyController {
     @Autowired
     private MongoTemplate mt;
 
-    @GetMapping("/ping")
+    @GetMapping("/api/ping")
     public String ping() {
         return mt.executeCommand("{ping:1}").toString();
     }
 
-    @GetMapping("/aggregationTime")
+    @GetMapping("/api/aggregationTime")
     public long aggregationTime() {
         long start = System.currentTimeMillis();
         dummyRepository.findAll();
@@ -32,12 +32,12 @@ public class DummyController {
         return end - start;
     }
 
-    @GetMapping("/dummy")
+    @GetMapping("/api/dummy")
     public List<Dummy> list() {
         return dummyRepository.findAll();
     }
 
-    @PostMapping("/postDummy")
+    @PostMapping("/api/postDummy")
     public Dummy postDummy(@RequestBody Dummy dummy) {
         dummyRepository.findById(dummy.getId()).ifPresent(d -> {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id already exists!");
