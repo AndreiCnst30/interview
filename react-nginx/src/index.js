@@ -1,15 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import Login from './Login';
+import Menu from './Menu';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import GenerateData from "./GenerateData";
+import GetAggregationTime from "./GetAggregationTime"
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    <BrowserRouter>
+        <Switch>
+            <Route exact path="/" component={Login} />
+        </Switch>
+        <Switch>
+            <Route exact path="/menu" component={Menu} />
+        </Switch>
+        <Switch>
+            <Route exact path="/generateData" component={GenerateData} />
+        </Switch>
+        <Switch>
+            <Route exact path="/getAggregationTime" component={GetAggregationTime} />
+        </Switch>
+    </BrowserRouter>,
+    document.getElementById('root'));
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
